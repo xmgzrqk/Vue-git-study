@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const stu1 = Symbol("李四");
+        const stu2 = Symbol("张三");
+        const grade = {
+
+            name: 'yunmu',
+            [stu1]: {
+                address: "yyy",
+                tel: "222",
+            },
+            [stu2]: {
+                address: "zzz",
+                tel: "333",
+            },
+        };
+
+
+        for (let key in grade) {
+            console.log(key)
+        }
+
+        for (let key of Object.keys(grade)) {
+            console.log(key)
+        }
+        console.log(Object.getOwnPropertySymbols(grade)); //  [Symbol(李四), Symbol(张三)]
+        for (let key of Object.getOwnPropertySymbols(grade)) {
+            console.log(key);
+        }
+
+        //既能取到普通属性又有Symbol属性
+        for (let key of Reflect.ownKeys(grade)) {
+            console.log(key)
+        }
+    </script>
+</body>
+
+</html>

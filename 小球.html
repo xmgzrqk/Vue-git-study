@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                background-color: #333;
+                overflow: hidden;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #ball {
+                position: absolute;
+
+                top: 100px;
+                left: 100px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: orange;
+                animation: changeColor 2s ease infinite alternate;
+            }
+
+            #shadow p {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: orange;
+                animation: change 0.5s linear forwards;
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            @keyframes change {
+                from {
+                    transform: scale(1);
+                    opacity: 1;
+                    filter: hue-rotate(0deg);
+                }
+                to {
+                    transform: scale(0);
+                    opacity: 0;
+                    filter: hue-rotate(180deg);
+                }
+            }
+
+            @keyframes changeColor {
+                from {
+                    filter: hue-rotate(0deg);
+                    box-shadow: 0 0 40px orange;
+                }
+                to {
+                    filter: hue-rotate(180deg);
+                    box-shadow: 0 0 40px orange;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ball"></div>
+
+        <div id="shadow">
+            <p></p>
+        </div>
+
+        <script>
+            let oBall = document.getElementById("ball");
+            let oShdow = document.getElementById("shadow");
+
+            //setInterval(function () {
+            //  oBall.style.left = oBall.offsetLeft + 3 + "px";
+            //}, 60 / 1000);
+
+            //计算当前页面可视区的最大宽与最大高
+            let max_x = document.documentElement.clientWidth - oBall.offsetWidth;
+            let max_y = document.documentElement.clientHeight - oBall.offsetHeight;
+
+            /*当改变窗口大小的时候，这个两个值发生改变*/
+            window.onresize = function () {
+                max_x = document.documentElement.clientWidth - oBall.offsetWidth;
+                max_y = document.documentElement.clientHeight - oBall.offsetHeight;
+            };
+
+            //window.onresize = (function x() {
+            //  maxLeft = document.documentElement.clientWidth - 50;
+            //  maxTop = document.documentElement.clientHeight - 50;
+            //  return x;
+            //})();
+
+            /*速度*/
+            let speed_x = 10;
+            let speed_y = 5;
+
+            (function m() {
+                /*变化*/
+                let left = oBall.offsetLeft + speed_x;
+                let top = oBall.offsetTop + speed_y;
+
+                /*判断大小*/
+                if (left >= max_x) {
+                    left = max_x;
+                    speed_x = -speed_x;
+                }
+                if (left <= 0) {
+                    left = 0;
+                    speed_x = -speed_x;
+                }
+
+                if (top >= max_y) {
+                    top = max_y;
+                    speed_y = -speed_y;
+                }
+
+                if (top <= 0) {
+                    top = 0;
+                    speed_y = -speed_y;
+                }
+
+                /*改变oBall的位置*/
+                oBall.style.left = left + "px";
+                oBall.style.top = top + "px";
+
+                /*创建阴影函数的执行*/
+                createShandow(left, top);
+                requestAnimationFrame(m);
+            })();
+
+            function createShandow(left, top) {
+                let oP = document.createElement("p");
+                oP.style.cssText = `left:${left}px ; top:${top}px`;
+
+                oShdow.appendChild(oP);
+
+                setTimeout(function () {
+                    oShdow.removeChild(oP);
+                }, 500);
+            }
+
+        </script>
+    </body>
+</html>

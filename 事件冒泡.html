@@ -1,0 +1,54 @@
+<style>
+    div {
+      display: flex;
+      margin: auto;
+    }
+    #box1 {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+    #box2 {
+      width: 150px;
+      height: 150px;
+      border: 1px solid black;
+    }
+    #box3 {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">
+    <div id="box2">
+      <div id="box3"></div>
+    </div>
+  </div>
+
+  <script>
+    let oBox1 = document.getElementById("box1");
+    let oBox2 = document.getElementById("box2");
+    let oBox3 = document.getElementById("box3");
+
+    oBox1.onclick = function () {
+      console.log("我是box1的onclick");
+    };
+    oBox2.onclick = function () {
+      console.log("我是box2的onclick");
+    };
+    oBox3.onclick = function () {
+      console.log("我是box3的onclick");
+    };
+      
+
+      //冒泡只会触发同等类型的事件
+      oBox2.onclick = function(){
+        console.log("我是box2的onclick");
+      }
+      oBox3.onmouseenter = function(){
+        console.log("我是box3的onmouseenter");
+      }
+      //即使打乱顺序 也是由Box3到Box1传递  我们感觉事件传递是由内往外
+  </script>

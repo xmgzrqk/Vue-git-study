@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class Person {
+        //     constructor(name) {
+        //         this.name = name;
+        //     }
+
+        //     speak() {
+        //         console.log('speak');
+        //     }
+        // }
+        // class Programmer extends Person {
+        //     constructor(name, sex) {
+        //         super(name, sex);
+
+        //         super()
+        //         console.log(super());
+        //         console.log(super.speak);
+        //     }
+        // }
+
+
+        // const p = new Promise((resolve, reject) => {
+        //     reject(1)
+        // })
+        // p.then(
+        //     (data) => {
+        //         console.log(data)
+        //     },
+        //     (data) => {
+        //         console.log(data)
+        //     }
+        // ).then(() => {
+        //     console.log("a")
+        //     return 2
+        // },
+        //     () => {
+        //         console.log(' b ')
+        //         return 3
+        //     }
+        // ).then(
+        //     (data) => {
+        //         console.log(data)
+        //     },
+        //     (data) => {
+        //         console.log(data)
+        //     }
+        // )
+
+        // const p = new Promise((resolve, reject) => {
+        //     console.log(1)
+        //     resolve(2)
+        // })
+        // p.then((res) => {
+        //     console.log(res)
+        //     return 3
+        // })
+        // .catch ((err) => 4)
+        // .then(res => console.log(res))
+
+        //         class Parent {
+        //         color = "red"
+        //         constructor(name, age) {
+        //             this.name = name
+        //             this.age = age
+        //         }
+        //         pSay() {
+        //             alert(this.name)
+        //         }
+        // }
+        //         class Child extends Parent {
+        //             constructor(name, age) {
+        //                 super()
+        //             }
+        //             cChild() {
+        //                 alert(this.name)
+        //             }
+        //         }
+        //         const p1 = new Parent('p1', 16)
+        //         const c1 = new Child('c1', 18)
+        //         c1.pSay()
+        //         p1.cChild()
+
+        // class Parent {
+        //     color = " red"
+        //     constructor(username) {
+        //         this.username = username
+        //     }
+        //     static pSay() {
+        //         console.log(this.username)
+        //     }
+        //     pShow() {
+        //         console.log(this.color)
+        //     }
+        // }
+        // class Child extends Parent {
+        //     constructor(username) {
+        //         super(username)
+        //     }
+        //     static cSay() {
+        //         super.pSay()
+        //     }
+        //     cShow() {
+        //         super.pShow()
+        //         console.log(super.color)
+        //     }
+        // }
+        // const c1 = new Child('c1')
+        // Child.cSay()
+        // c1.cShow()
+
+
+        // function foo(n) {
+        //     const f =() => {
+        //         const [arg1] = arguments; return arg1 + n;
+        //     };
+        //     return f();
+        // }
+        // let res = foo(2); console.log(res);
+
+        // const foo = ({x = 1, y = 2, z = 3}) => {
+        //     console.log(x, y, z);
+        // };
+        // foo({
+        //     z: 2, 
+        //     y: 1, 
+        //     x: 0,
+        // })
+
+        // const map = new Map();
+        // const s = new Set([1, NaN, 2, 1,"NaN", NaN]); 
+        // map.set([1], "imooc")
+        // const m1 = map.get([1]); 
+        // console.log(m1)
+        // console.log(s.size)
+
+        // Promise.resolve(1)
+        //     .then((x) => x + 1).then((x) => {
+        //         throw new Error("err ");
+        //     })
+        //     .catch(() => 1)
+        //     .then((x) => x + 1)
+        //     .then((x) => console.log(x))
+        //     .catch((x) => console.log(error));
+
+
+        // const age = 17;
+        // class Person {
+        //     constructor(age) {
+        //         this.age = age;
+        //     }
+        //     age = 18;
+        //     static age = 19;
+        //     say = () => {
+        //         console.log(this.age);
+        //     };
+        // }
+        // let p1 = new Person(20); 
+        // p1.say();
+
+        // const arr = [...[...'...']];
+        // console.log( arr.length)
+
+
+        // let a = 1;
+        // const foo = () => {
+        //     return (obj = {
+        //         a: 2,
+        //         fn() {
+        //             let a = 3;
+        //             setTimeout(() => { console.log(this.a); });
+        //         },
+        //     });
+        // };
+        // const result = foo(); 
+        // result.fn();
+
+
+        //  结果为 2,1,2,2
+        // let a = 1; 
+        // {
+        //     let a = 2;
+        //     console.log(a);  // 第一次输出
+        // }
+        // console.log(a); //第二次输出a
+
+        // {
+        //     var b = 1; 
+        //     {
+        //         var b = 2;
+        //         console.log(b); //第一次输出b
+        //     }
+        //     console.log(b); //第二次输出b
+        // }   
+
+
+        // //报错
+        // function bar(x = y, y = 2) {
+        //     return [x, y];
+        // }
+        // console.log(bar());
+
+
+
+        // const target = {
+        //     a: {
+        //         b: "c", d: "e"
+        //     }
+        // };
+        // const source = {
+        //     a: { b: "hello" }
+        // };
+        // const obj = Object.assign(target, source); 
+        // console.log(obj);
+
+
+
+        class Person {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            eat() {
+                alert("前端");
+            }
+        }
+        class ColorPoint extends Person {
+            constructor(x, y) {
+                super(x, y);
+                this.x = "ES6";
+            }
+        }
+        let col = new ColorPoint("js", "javascript");
+
+        console.log(col.x);
+    </script>
+</body>
+
+</html>

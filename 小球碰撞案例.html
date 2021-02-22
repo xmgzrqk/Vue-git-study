@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #222;
+        }
+
+        .ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 100px;
+            left: 100px;
+            border-radius: 50%;
+            background-color: orange;
+            animation: changeColor 2s ease infinite alternate;
+            z-index: 2;
+        }
+
+        .shadow p {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: orange;
+            animation: change 0.5s linear forwards;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        @keyframes change {
+            from {
+                transform: scale(1);
+                opacity: 1;
+                filter: hue-rotate(0deg);
+            }
+
+            to {
+                transform: scale(0);
+                opacity: 0;
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes changeColor {
+            from {
+                filter: hue-rotate(0deg);
+                box-shadow: 0 0 40px orange;
+            }
+
+            to {
+                filter: hue-rotate(180deg);
+                box-shadow: 0 0 40px orange;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball"></div>
+    <div class="shadow">
+        <p></p>
+    </div>
+    <script>
+
+        let ball = document.querySelector(".ball")
+        let oShadow = document.querySelector(".shadow")
+
+        let max_x = document.documentElement.clientWidth - ball.offsetWidth
+        let max_y = document.documentElement.clientHeight - ball.offsetHeight
+
+        window.onresize = function () {
+            max_x = document.documentElement.clientWidth - ball.offsetWidth
+            max_y = document.documentElement.clientHeight - ball.offsetHeight
+        }
+
+        let speed_x = 8
+        let speed_y = 8
+
+            ; (function fn() {
+                let left = ball.offsetLeft + speed_x
+                let top = ball.offsetTop + speed_y
+
+
+                if (left >= max_x) {
+                    left = max_x
+                    speed_x = -speed_x
+                }
+
+                if (left <= 0) {
+                    left = 0
+                    speed_x = -speed_x
+                }
+                if (top >= max_y) {
+                    top = max_y
+                    speed_y = -speed_y
+                }
+
+                if (top <= 0) {
+                    top = 0
+                    speed_y = -speed_y
+                }
+
+                ball.style.left = left + "px"
+                ball.style.top = top + "px"
+
+                createShadow(left, top);
+
+                requestAnimationFrame(fn)
+            })()
+
+
+        function createShadow(left, top) {
+            let oP = document.createElement("p");
+            oP.style.cssText = `left:${left}px ; top:${top}px`;
+
+            oShadow.appendChild(oP);
+
+            setTimeout(function () {
+                oShadow.removeChild(oP);
+            }, 500);
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #wrap {
+            overflow: hidden;
+            width: 850px;
+            border: 4px solid #000;
+            margin: 50px auto;
+        }
+
+        #wrap ul {
+            position: relative;
+            display: flex;
+            width: 5000px;
+        }
+
+        #wrap ul li {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul id="list">
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g5pVO.th.png" alt="" />
+            </li>
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g5FGd.th.png" alt="" />
+            </li>
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g5udS.th.png" alt="" />
+            </li>
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g5YLV.th.png" alt="" />
+            </li>
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g5aoF.th.png" alt="" />
+            </li>
+            <li>
+                <img src="https://s1.ax1x.com/2020/10/11/0g50JJ.th.png" alt="" />
+            </li>
+        </ul>
+    </div>
+    <script>
+        let oList = document.getElementById("list");
+        let oWrap = document.getElementById("wrap");
+
+        //复制一遍li
+        oList.innerHTML += oList.innerHTML;
+
+        // 表示Ul的left值
+        let left = 0;
+
+        //定时器变量timer
+        let timer;
+
+        // 设置定时器
+        function move() {
+            timer = setInterval(function () {
+                //设表先关
+                //   clearInterval(timer);
+
+                left -= 5;
+                // 验收 小于指定像素 回到第一张
+
+                if (left <= -1010) {
+                    left = 0;
+                }
+
+                oList.style.left = left + "px";
+            }, 20);
+        }
+
+        //  调用定时器函数
+        move();
+
+        // 鼠标进入停止定时器
+        oWrap.onmouseenter = function () {
+            clearInterval(timer);
+        };
+
+        //鼠标离开开始定时器
+        oWrap.onmouseleave = function () {
+            move();
+        };
+
+    </script>
+</body>
+
+</html>

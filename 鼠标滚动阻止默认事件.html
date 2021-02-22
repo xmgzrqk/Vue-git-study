@@ -1,0 +1,33 @@
+<style>
+    #box{
+        width: 200px;
+        height: 200px;
+        background-color: #333;
+    }
+    body{
+        height: 3000px;
+    }
+
+</style>
+</head>
+<body>
+    <div id="box"></div>
+    <h1 id="info">0</h1>
+    <script>
+        let oBox = document.getElementById("box");
+        let oInfo = document.getElementById("info");
+
+        //全局变量就是info中显示的数字
+        let a = 0;
+
+        oBox.onmousewheel = function(e){
+            if(e.deltaY > 0){
+                a++;
+            }else{
+                a--;
+            }
+            oInfo.innerText = a;
+            //阻止默认事件 用户在盒子里面滚动鼠标滚轮的时候,此时不会引发页面的滚动条的滚动
+            e.preventDefault();
+        }
+    </script>

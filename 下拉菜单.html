@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul {
+            width: 200px;
+            margin: 50px;
+        }
+
+        ul li {
+            overflow: hidden;
+            height: 30px;
+        }
+
+        ul li.show {
+            height: auto;
+        }
+
+        ul li h3 {
+            line-height: 35px;
+            background-color: pink;
+            color: #fff;
+            cursor: pointer;
+            margin: 1px;
+        }
+
+        ul li div {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        ul li div input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <h3>我的好友</h3>
+            <div>
+                <span>曾国藩</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>李鸿章</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>林则徐</span>
+                <input type="button" value="修改" />
+            </div>
+        </li>
+        <li>
+            <h3>我的学生</h3>
+            <div>
+                <span>二狗子</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>王麻子</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>坏蛋</span>
+                <input type="button" value="修改" />
+            </div>
+        </li>
+        <li>
+            <h3>我的女友</h3>
+            <div>
+                <span>林徽因</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>林黛玉</span>
+                <input type="button" value="修改" />
+            </div>
+            <div>
+                <span>张爱玲</span>
+                <input type="button" value="修改" />
+            </div>
+        </li>
+    </ul>
+    <script>
+        let ul = document.getElementsByTagName("ul")[0];
+        let head = ul.getElementsByTagName("h3");
+        let list = ul.getElementsByTagName("li");
+        let btn = ul.getElementsByTagName("input");
+        let span = ul.getElementsByTagName("span");
+
+        for (let i = 0; i < head.length; i++) {
+
+            head[i].mark = false;
+
+            head[i].onclick = function () {
+                if (head[i].mark) {
+                    list[i].classList.remove("show")
+                    head[i].mark = false
+
+                } else {
+                    for (let j = 0; j < head.length; j++) {
+                        list[j].classList.remove("show")
+                        head[j].mark = false
+                    }
+                    list[i].classList.add("show")
+                    head[i].mark = true
+
+                }
+            }
+        }
+
+        // for(let i = 0; i < btn.length; i++){
+        //     btn[i].mark = false
+
+        //     btn[i].onclick = function(){
+        //         if(btn[i].mark){
+        //             span[i].contentEditable = false
+        //             btn[i].value = "修改"
+        //             btn[i].mark = false
+        //         }else{
+        //             span[i].contentEditable = true
+        //             btn[i].value = "确定"
+        //             btn[i].mark = true
+        //         }
+        //     }
+        // }
+
+        for(let i = 0; i < btn.length; i++){
+            btn[i].mark = false
+
+            btn[i].onclick = function(){
+                span[i].contentEditable = !btn[i].mark
+                btn[i].value = btn[i].mark ? "修改" : "确定"
+                btn[i].mark = !btn[i].mark
+            }
+        }
+    </script>
+</body>
+
+</html>

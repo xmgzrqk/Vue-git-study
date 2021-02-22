@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" id="btn" value="点我生成新的列表项">
+    <ul id="list">
+        <li>列表项</li>
+        <li>列表项</li>
+        <li>列表项</li>
+        <li>列表项</li>
+    </ul>
+
+    <script>
+        let oList = document.getElementById("list");
+
+        oList.onclick = function (e) {
+            //e.target表示用户真正点击的那个元素 点击谁谁就是target  事件源
+            e.target.style.color = "red";
+
+            console.log(e.target);
+            console.log(e.currentTarget);
+            //e.currentTarget 事件绑定在谁身上  就是指向谁 相当于this
+        };
+
+        let oBtn = document.getElementById("btn");
+
+        oBtn.onclick = function () {
+            // 创建新的li元素
+            let oLi = document.createElement("li");
+            // 写内容
+            oLi.innerText = "列表项";
+            // 上树
+            oList.appendChild(oLi);
+        }
+    </script>
+</body>

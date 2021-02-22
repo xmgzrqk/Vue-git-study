@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #table td{
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            margin:5px;
+            border: 3px solid blue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="table"></div>
+    <script>
+        let table = document.getElementById("table")
+        
+        //九九乘法表
+        for(let i = 1; i <= 9; i++){
+
+            let tr = document.createElement("tr")
+
+            for(let j = 1; j <= i; j++){
+
+                let td = document.createElement("td")
+
+                tr.appendChild(td)
+
+                td.innerHTML = `${j} x ${i} = ${j*i}`
+            }
+
+            table.appendChild(tr)
+
+        }
+    </script>
+</body>
+</html>

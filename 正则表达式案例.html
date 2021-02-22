@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warning {
+            color: red;
+            display: none;
+        }
+
+        .pass {
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            请输入中文姓名：
+            <input type="text" id="name-field" />
+            <span class="warning" id="name-warning">输入的姓名不合法</span>
+            <span class="pass" id="name-pass">输入的姓名合法</span>
+        </p>
+        <p>
+            请输入手机号码：
+            <input type="text" id="tel-field" />
+            <span class="warning" id="tel-warining">输入的手机号码不合法</span>
+            <span class="pass" id="tel-pass">输入的手机号码合法</span>
+        </p>
+        <p>
+            请输入Email：
+            <input type="text" id="email-field" />
+            <span class="warning" id="email-warning">输入的Email不合法</span>
+            <span class="pass" id="email-pass">输入的Email合法</span>
+        </p>
+    </div>
+    <script>
+        let nameField = document.getElementById("name-field");
+        let telField = document.getElementById("tel-field");
+        let emailField = document.getElementById("email-field");
+        let nameWarning = document.getElementById("name-warning");
+        let telWarning = document.getElementById("tel-warining");
+        let emailWarning = document.getElementById("email-warning");
+        let namePass = document.getElementById("name-pass");
+        let emailPass = document.getElementById("email-pass");
+        let telPass = document.getElementById("tel-pass");
+
+
+        nameField.onblur = function(){
+            let name = nameField.value
+            if(/^[\u4e00-\u9fa5]{2,4}$/.test(name)){
+                nameWarning.style.display = "none"
+                namePass.style.display = "inline"
+            }else{
+                nameWarning.style.display = "inline"
+                namePass.style.display = "none"
+            }
+        }
+
+        telField.onblur = function(){
+            let tel = telField.value
+            if(/^1\d{10}$/.test(tel)){
+                telWarning.style.display = "none"
+                telPass.style.display = "inline"
+            }else{
+                telWarning.style.display = "inline"
+                telPass.style.display = "none"
+            }
+        }
+
+        emailField.onblur = function(){
+            let email = emailField.value
+            if(/^\w{2,}\@\w{2,}\.[a-z]{2,4}(\.[a-z]{2,4})?$/.test(email)){
+                emailWarning.style.display = "none"
+                emailPass.style.display = "inline"
+            }else{
+                emailWarning.style.display = "inline"
+                emailPass.style.display = "none"
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

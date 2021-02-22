@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 200px;
+            height: 100px;
+            background-color: #333;
+            text-align: center;
+            line-height: 100px;
+            transition: 0.5s;
+            transform: scale(0);
+        }
+
+        #content.show {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点我试试" id="tips" />
+    <div id="content">弹窗内容</div>
+
+    <script>
+        let oButton = document.getElementById("tips"),
+            oCotent = document.getElementById("content");
+
+        // 点击按钮的时候 弹出层显示
+        oButton.onclick = function (e) {
+            //  阻止事件继续传播到document上
+            e.stopPropagation();
+            oCotent.classList.add("show");
+        };
+
+        // 点击页面的任何部分的时候 弹出层关闭
+        document.onclick = function () {
+            oCotent.classList.remove("show");
+        };
+
+        //  点击弹出层内部的时候 不能关闭弹出层的 应该阻止事件继续传播
+        oCotent.onclick = function (e) {
+            //阻止事件继续传播到document身上
+            e.stopPropagation();
+        };
+    </script>
+</body>
+</html>

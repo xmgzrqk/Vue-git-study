@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>距离2021年元旦节</h1>
+    <h2 id = "info"></h2>
+    <script>
+        let info = document.getElementById("info")
+
+        function fn(){
+            //当前日期
+            let nd = new Date()
+            //目标日期
+            let td = new Date(2021,0,1)
+            //目标日期减去当前日期所剩的毫秒数
+            let diff = td - nd
+            
+            let day = parseInt(diff / 1000 / 60 / 60 / 24)
+            
+            let hour = parseInt(diff / 1000 / 60 / 60 % 24)
+            
+            let minute = parseInt(diff / 1000 / 60  % 60)
+
+            let seconds = parseInt(diff / 1000 % 60)
+            //将获取的天，小时，分钟，秒渲染到页面上
+            info.innerHTML = `剩余 ${day}天，${hour}小时，${minute}分钟，${seconds}秒`
+        }
+
+        fn()
+        setInterval(fn , 1000)
+    </script>
+</body>
+</html>

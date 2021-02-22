@@ -1,0 +1,57 @@
+<style>
+    div {
+        display: flex;
+        margin: auto;
+    }
+    #box1 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    #box2 {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+    }
+    #box3 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+
+    <script>
+        let oBox1 = document.getElementById("box1");
+        let oBox2 = document.getElementById("box2");
+        let oBox3 = document.getElementById("box3");
+
+        oBox1.addEventListener("click", function () {
+            console.log("我是box1的捕获阶段");
+        },true);
+        oBox2.addEventListener("click", function () {
+            console.log("我是box2的捕获阶段");
+        },true);
+        oBox3.addEventListener("click", function () {
+            console.log("我是box3的捕获阶段");
+        },true);
+
+        oBox1.addEventListener("click", function () {
+            console.log("我是box1的冒泡阶段");
+        },false);
+        oBox2.addEventListener("click", function () {
+            console.log("我是box2的冒泡阶段");
+        },false);
+        oBox3.addEventListener("click", function () {
+            console.log("我是box3的冒泡阶段");
+        },false);
+        //先捕获再冒泡  
+        //最内层的元素不区分捕获还是冒泡 受顺序影响
+    </script>
+</body>
